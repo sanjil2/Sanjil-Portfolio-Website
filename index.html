@@ -516,6 +516,9 @@
                         <button type = "submit">Submit</button>
                     </form>
                     <script>
+// Initialize EmailJS with your public key
+emailjs.init('nMJgUdDf8cPydd-KH'); // You'll get this from emailjs.com
+
 function sendEmail(event) {
     event.preventDefault();
     
@@ -529,11 +532,20 @@ function sendEmail(event) {
         return;
     }
     
-    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    window.open(`mailto:sanjilkc0@gmail.com?subject=Contact Form Submission&body=${encodeURIComponent(body)}`);
-    
-    form.reset();
-    alert('Email client opened! Please send the email.');
+    // Send email using EmailJS
+    emailjs.send('service_ce19zwa', 'template_1sy220z', {
+        from_name: name,
+        from_email: email,
+        message: message,
+        to_email: 'sanjilkc0gmail.com'
+    })
+    .then(function(response) {
+        alert('Email sent successfully!');
+        form.reset();
+    }, function(error) {
+        alert('Failed to send email. Please try again.');
+        console.error('EmailJS error:', error);
+    });
 }
 </script>
                 </div>
