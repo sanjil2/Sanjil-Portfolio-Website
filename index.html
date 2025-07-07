@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="./assets/css/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   </head>
   <body id="top">
 
@@ -527,8 +528,16 @@ function sendEmail(event) {
     const email = form.elements['email'].value;
     const message = form.elements['message'].value;
     
+        // ✅ Add email format validation here
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!name || !email || !message) {
         alert('Please fill in all fields');
+        return;
+    }
+
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address');
         return;
     }
     
