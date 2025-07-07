@@ -73,7 +73,7 @@
                     <h1 class="h3">Hello!
                     </h1>
                     <br>
-                    <h1 class="h3">I’m Sanjil, an AI/ML Engineer who builds and deploys machine learning models to turn data into actionable business insights.
+                    <h1 class="h3">I’m Sanjil, an aspiring AI/ML Engineer skilled in Python and data analysis, passionate about building and deploying machine learning models to transform data into actionable business solutions.
 
                     </p>
                     <div>
@@ -516,22 +516,26 @@
                         <button type = "submit">Submit</button>
                     </form>
                     <script>
-                        const form = document.getElementById('contactForm');
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  
-  const name = form.elements['name'].value;
-  const email = form.elements['email'].value;
-  const message = form.elements['message'].value;
-  
-  const body = `Name: ${name} \nEmail: ${email} \n\n${message}`;
-
-  window.open(`mailto:sanjilkc0@gmail.com?subject=Contact Form&body=${encodeURIComponent(body)}`);
-
-});
-                        
-                        </script>
+function sendEmail(event) {
+    event.preventDefault();
+    
+    const form = document.getElementById('collection');
+    const name = form.elements['name'].value;
+    const email = form.elements['email'].value;
+    const message = form.elements['message'].value;
+    
+    if (!name || !email || !message) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    window.open(`mailto:sanjilkc0@gmail.com?subject=Contact Form Submission&body=${encodeURIComponent(body)}`);
+    
+    form.reset();
+    alert('Email client opened! Please send the email.');
+}
+</script>
                 </div>
 
             </div>
